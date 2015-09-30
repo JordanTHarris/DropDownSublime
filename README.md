@@ -13,7 +13,15 @@ You can change it, as well as some other settings, in the file
 for more details on that.
 </p>
 
-<h3>Known Issues</h2>
+<h2>New features</h2>
+<ul>
+    <li>The drop down window can now be "anchored" to either the left or the right side, instead of
+    just the center like before. This can be applied in the DropDownSublime.ini file by setting
+    <em>initial_side</em> to the side you want (left or right). For example:
+    <strong>initial_side=left</strong>. Any other value will anchor it to center, like before.</li>
+</ul>
+
+<h2>Known Issues</h2>
 <ul>
   <li>When Sublime Text isn't already opened, the sizing and positioning of it's window isn't how it's
   expected to be. It loads with the size of the window that you last closed. This could be useful if you
