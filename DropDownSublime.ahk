@@ -35,6 +35,7 @@ IniRead, animationModeFade, %iniFile%, Display, animation_mode_fade, 0
 IniRead, animationModeSlide, %iniFile%, Display, animation_mode_slide, 1
 IniRead, animationStep, %iniFile%, Display, animation_step, 60
 IniRead, animationTimeout, %iniFile%, Display, animation_timeout, 1
+IniRead, initialWinSide, %iniFile%, Display, initial_side, left
 IfNotExist %iniFile%
 {
     SaveSettings()
@@ -123,7 +124,7 @@ toggle()
 
 Slide(Window, Dir)
 {
-    global initialWidth, animationModeFade, animationModeSlide, animationStep, animationTimeout, autohide, isVisible, currentTrans, initialTrans
+    global initialWidth, animationModeFade, animationModeSlide, animationStep, animationTimeout, autohide, isVisible, currentTrans, initialTrans, initialWinSide
     WinGetPos, Xpos, Ypos, WinWidth, WinHeight, %Window%
     
     WinGet, testTrans, Transparent, %Window%
@@ -149,7 +150,23 @@ Slide(Window, Dir)
     If (Dir = "In")
     {
       WinShow %Window%
-      WinLeft := ScreenLeft + (1 - initialWidth/100) * ScreenWidth / 2
+
+      ; Change value used for width when positoning window (based on side)
+      widthForSide :=
+      if (initialWinSide = "left")
+      {
+        widthForSide := 1
+      }
+      else if (initialWinSide = "right") 
+      {
+         widthForSide := ScreenWidth
+      }
+      else
+      {
+        widthForSide := ScreenWidth / 2     
+      }
+
+      WinLeft := ScreenLeft + (1 - initialWidth/100) * widthForSide
       WinMove, %Window%,, WinLeft
     }
     Loop
@@ -357,6 +374,7 @@ SaveSettings() {
     IniWrite, %animationModeFade%, %iniFile%, Display, animation_mode_fade
     IniWrite, %animationStep%, %inifile%, Display, animation_step
     IniWrite, %animationTimeout%, %iniFile%, Display, animation_timeout
+    IniWrite, %initialWinSide%, %iniFile%, Display, initial_side
     CheckWindowsStartup(startWithWindows)
 }
 
