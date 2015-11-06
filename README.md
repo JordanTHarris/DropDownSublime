@@ -19,6 +19,8 @@ for more details on that.
     just the center like before. This can be applied in the DropDownSublime.ini file by setting
     <em>initial_side</em> to the side you want (left or right). For example:
     <strong>initial_side=left</strong>. Any other value will anchor it to center, like before.</li>
+    <li>The window can now be moved to the left side with <kbd>Win</kbd>+<kbd>Shift</kbd>+<kbd>Left</kbd>
+    or to the right side with <kbd>Win</kbd>+<kbd>Shift</kbd>+<kbd>Right</kbd></li>
 </ul>
 
 <h2>Known Issues</h2>
