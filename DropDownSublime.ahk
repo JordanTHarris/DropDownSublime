@@ -354,6 +354,26 @@ return
         }
     }
 return
+
+; Move window to left side (Win + Shift + Left)
+#+Left::
+    if(WinActive("ahk_pid" . hw_sublime)) {
+        widthForSide := 1
+        WinLeft := ScreenLeft + (1 - initialWidth/100) * widthForSide
+        WinMove, %Window%,, WinLeft
+    }
+return
+
+; Move window to right side (Win + Shift + Right)
+#+Right::
+    if(WinActive("ahk_pid" . hw_sublime)) {
+        widthForSide := ScreenWidth
+        WinLeft := ScreenLeft + (1 - initialWidth/100) * widthForSide
+        WinMove, %Window%,, WinLeft
+    }
+return
+
+
 #IfWinActive
 
 ;*******************************************************************************
