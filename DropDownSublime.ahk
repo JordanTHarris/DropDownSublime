@@ -361,6 +361,7 @@ return
         widthForSide := 1
         WinLeft := ScreenLeft + (1 - initialWidth/100) * widthForSide
         WinMove, %Window%,, WinLeft
+        initialWinSide := "left"    ; set so everything knows what side it's on
     }
 return
 
@@ -370,6 +371,7 @@ return
         widthForSide := ScreenWidth
         WinLeft := ScreenLeft + (1 - initialWidth/100) * widthForSide
         WinMove, %Window%,, WinLeft
+        initialWinSide := "right"   ; set so everything knows what side it's on
     }
 return
 
